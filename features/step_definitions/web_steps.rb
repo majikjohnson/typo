@@ -55,6 +55,14 @@ And /^I am logged into the admin panel$/ do
   end
 end
 
+Given /^I have successfully added the category "([^"]*)"$/ do |category_name|
+  steps %Q{
+    When I follow "Categories"
+    And I fill in "category_name" with "#{category_name}"
+    And I press "Save"
+  }
+end
+
 # Single-line step scoper
 When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
